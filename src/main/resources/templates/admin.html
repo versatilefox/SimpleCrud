@@ -1,0 +1,54 @@
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Page</title>
+    <style>
+        table {
+            width: 100%;
+            border: 0.5px double black;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            background: #ccc;
+            padding: 5px;
+            border: 1px solid black;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{/logout}">Logout</a>
+<br>
+<a th:href="@{/admin/add}">Add new user</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Role</th>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="users" type="java.util.List<firstapp.user.User>"*/-->
+    <tr th:each="user:${users}">
+        <td><span th:text="${user.getId()}"></span></td>
+        <td><span th:text="${user.getUserOrAdmin(user.getRole())}"></span></td>
+        <td><span th:text="${user.getLogin()}"></span></td>
+        <td><span th:text="${user.getPassword()}"></span></td>
+        <td><span th:text="${user.getName()}"></span></td>
+        <td><a th:href="@{/admin/edit/{id}(id=${user.getId()})}">Edit user</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html> 

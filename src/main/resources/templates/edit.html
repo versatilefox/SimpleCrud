@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Edit user</h2>
+<form th:action="@{/admin/edit}" method="post" id="edit"></form>
+<table>
+    <tr><input type="hidden" name="id" form="edit" th:value="${user.getId()}"/></tr>
+    <tr><input type="hidden" name="role" form="edit" th:value="${user.getRole()}"/></tr>
+    <tr>
+        <td>Name</td>
+        <td><input form="edit" type="text" th:value="${user.getName()}"  name="name" />
+        </td>
+    </tr>
+    <tr>
+        <td>Login</td>
+        <td><input form="edit" type="text" th:value="${user.getLogin()}" name="login" />
+        </td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><input form="edit" type="text" th:value="${user.getPassword()}" name="password" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input form="edit" type="submit" value="Save" />
+        </td>
+    </tr>
+</table>
+</body>
+</html>
